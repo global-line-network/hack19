@@ -5,8 +5,6 @@ import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
 import 'package:http/http.dart' show Client;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../ModelLayer/network/network_layer.dart';
-
 class Injector {
   static final Injector _singleton = new Injector._internal();
 
@@ -15,14 +13,12 @@ class Injector {
   }
 
   Client _client;
-  NetworkLayer _networkLayer;
   ModelLayer _modelLayer;
   SharedPreferencesLayer _preferencesLayer;
   GoogleSignIn _googleSignIn;
   FirebaseAuth _firebaseAuth;
 
   Injector._internal() {
-    _networkLayer = NetworkLayerImpl(client: _client);
     _preferencesLayer =
         SharedPreferencesLayerImpl(prefs: SharedPreferences.getInstance());
     _googleSignIn = GoogleSignIn(

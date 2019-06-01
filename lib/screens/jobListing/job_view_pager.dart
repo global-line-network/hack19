@@ -1,40 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:hack19/ModelLayer/model/post.dart';
 
 import 'job_listing_item.dart';
 
 class AllJobsViewPager extends StatefulWidget {
-  const AllJobsViewPager({
-    Key key,
-    @required this.controller,
-    @required this.currentPageValue,
-  }) : super(key: key);
+  final List<Post> posts;
 
-  final PageController controller;
-  final double currentPageValue;
+  const AllJobsViewPager({Key key, this.posts}) : super(key: key);
 
   @override
   _AllJobsViewPagerState createState() => _AllJobsViewPagerState();
 }
 
 class _AllJobsViewPagerState extends State<AllJobsViewPager> {
+  PageController controller = PageController();
+  var currentPageValue = 0.0;
+
+  @override
+  void initState() {
+    controller.addListener(() {
+      setState(() {
+        currentPageValue = controller.page;
+      });
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: widget.controller,
+      controller: controller,
       itemBuilder: (context, position) {
-        if (position == widget.currentPageValue.floor()) {
+        if (position == currentPageValue.floor()) {
           return Transform(
             transform: Matrix4.identity()
-              ..rotateY(widget.currentPageValue - position)
-              ..rotateZ(widget.currentPageValue - position),
-            child: JobItemView(),
+              ..rotateY(currentPageValue - position)
+              ..rotateZ(currentPageValue - position),
+            child: JobItemView(
+              post: widget.posts[position],
+            ),
           );
-        } else if (position == widget.currentPageValue.floor() + 1) {
+        } else if (position == currentPageValue.floor() + 1) {
           return Transform(
             transform: Matrix4.identity()
-              ..rotateY(widget.currentPageValue - position)
-              ..rotateZ(widget.currentPageValue - position),
-            child: JobItemView(),
+              ..rotateY(currentPageValue - position)
+              ..rotateZ(currentPageValue - position),
+            child: JobItemView(
+              post: widget.posts[position],
+            ),
           );
         } else {
           return Container(
@@ -48,7 +62,7 @@ class _AllJobsViewPagerState extends State<AllJobsViewPager> {
           );
         }
       },
-      itemCount: 10,
+      itemCount: widget.posts.length,
     );
   }
 }
