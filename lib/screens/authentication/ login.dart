@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hack19/ModelLayer/model_layer.dart';
 import 'package:hack19/styles/style.dart';
-
+import 'package:hack19/navigator/navigator.dart';
 import '../../strings.dart';
 import '../../widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class LoginScreen extends StatefulWidget {
   final ModelLayer dataSource;
@@ -22,6 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+    FirebaseAuth.instance.currentUser().then((user) {
+      Navigator.pushNamed(context, AppNavigator.jobListing);
+    });
   }
 
   // Background Image
@@ -66,5 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _onGoogleLoginClicked() {}
+  _onGoogleLoginClicked() {
+    widget.dataSource.authenticateUser().then((user) {
+      Navigator.pushNamed(context, AppNavigator.jobListing);
+    }).catchError((error) {
+      print("error " + error.toString());
+    });
+  }
 }

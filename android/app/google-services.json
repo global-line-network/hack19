@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "237604189213-5esgnb4govipvdu0hdbra41q6ojor0ri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hack19",
+            "certificate_hash": "f275103ed09f318ee4acbe333c9a41c396a5f231"
+          }
+        },
+        {
           "client_id": "237604189213-jbd0rl43he4a93dtfudj3525ae2qkdpb.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "237604189213-jbd0rl43he4a93dtfudj3525ae2qkdpb.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "237604189213-b8tv24m40u2li4jrlgc0ug1sh8fsgbp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hack19"
+              }
             }
           ]
         }
