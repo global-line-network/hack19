@@ -100,3 +100,5 @@ android/local.properties
 *.properties
 .idea/libraries/Dart_Packages.xml
 .idea/libraries/Flutter_Plugins.xml
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcodeproj/project.pbxproj
