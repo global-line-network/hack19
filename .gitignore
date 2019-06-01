@@ -91,3 +91,10 @@ unlinked_spec.ds
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+android/local.properties
+android/local.properties
+ios/Flutter/Generated.xcconfig
+android/local.properties
+ios/Flutter/Generated.xcconfig
+android/local.properties
+*.properties
