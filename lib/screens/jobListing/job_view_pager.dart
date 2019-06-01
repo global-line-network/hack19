@@ -39,6 +39,7 @@ class _AllJobsViewPagerState extends State<AllJobsViewPager> {
               ..rotateZ(currentPageValue - position),
             child: JobItemView(
               post: widget.posts[position],
+              isSecondPager: false,
             ),
           );
         } else if (position == currentPageValue.floor() + 1) {
@@ -48,6 +49,7 @@ class _AllJobsViewPagerState extends State<AllJobsViewPager> {
               ..rotateZ(currentPageValue - position),
             child: JobItemView(
               post: widget.posts[position],
+              isSecondPager: true,
             ),
           );
         } else {

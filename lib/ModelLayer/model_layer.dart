@@ -55,58 +55,57 @@ class ModelLayerImpl implements ModelLayer {
 
   @override
   Future<List<Post>> fetchJobs() {
-    {
-      List<Post> posts = new List();
-      posts.add(Post(
-          name: "post 1",
-          image:
-              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
-          city: "KL",
-          companyName: "Global Line Network",
-          currency: "MYR",
-          description:
-              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
-          industry: "IT",
-          salary: 10000.00));
-      posts.add(Post(
-          name: "post 2",
-          image:
-              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
-          city: "KL",
-          companyName: "Global Line Network",
-          currency: "MYR",
-          description:
-              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
-          industry: "IT",
-          salary: 10000.00));
+    List<Post> posts = new List();
 
-      posts.add(Post(
-          name: "post 3",
-          image:
-              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
-          city: "KL",
-          companyName: "Global Line Network",
-          currency: "MYR",
-          description:
-              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
-          industry: "IT",
-          salary: 10000.00));
+    posts.add(Post(
+        name: "post 1",
+        image:
+            "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+        city: "KL",
+        companyName: "Global Line Network",
+        currency: "MYR",
+        description:
+            "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+        industry: "IT",
+        salary: 10000.00));
+    posts.add(Post(
+        name: "post 2",
+        image:
+            "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+        city: "KL",
+        companyName: "Global Line Network",
+        currency: "MYR",
+        description:
+            "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+        industry: "IT",
+        salary: 10000.00));
 
-      posts.add(Post(
-          name: "post 4",
-          image:
-              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
-          city: "KL",
-          companyName: "Global Line Network",
-          currency: "MYR",
-          description:
-              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
-          industry: "IT",
-          salary: 10000.00));
+    posts.add(Post(
+        name: "post 3",
+        image:
+            "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+        city: "KL",
+        companyName: "Global Line Network",
+        currency: "MYR",
+        description:
+            "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+        industry: "IT",
+        salary: 10000.00));
 
-      return Future(() {
-        return posts;
-      });
-    }
+    posts.add(Post(
+        name: "post 4",
+        image:
+            "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+        city: "KL",
+        companyName: "Global Line Network",
+        currency: "MYR",
+        description:
+            "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+        industry: "IT",
+        salary: 10000.00));
+
+    return Future(() {
+      return posts;
+    });
   }
 }

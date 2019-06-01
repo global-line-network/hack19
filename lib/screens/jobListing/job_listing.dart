@@ -5,6 +5,7 @@ import 'package:hack19/ModelLayer/model_layer.dart';
 import '../../strings.dart';
 import '../../styles/style.dart';
 import 'job_view_pager.dart';
+import 'job_view_pager_2.dart';
 
 class JobListingScreen extends StatefulWidget {
   final ModelLayer dataSource;
@@ -18,6 +19,8 @@ class JobListingScreen extends StatefulWidget {
 class _JobListingScreenState extends State<JobListingScreen> {
   List<Post> _posts = List();
 
+  String pageTitle = AppStrings.appTitle;
+
   @override
   void initState() {
     _loadPosts();
@@ -29,7 +32,7 @@ class _JobListingScreenState extends State<JobListingScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppStrings.appTitle,
+            pageTitle,
             style: appBarTitleStyle,
           ),
           backgroundColor: accentColor,
@@ -38,8 +41,17 @@ class _JobListingScreenState extends State<JobListingScreen> {
           scrollDirection: Axis.vertical,
           children: <Widget>[
             new AllJobsViewPager(posts: _posts),
-            new AllJobsViewPager(posts: _posts)
+            new AllJobsViewPager2(posts: _posts)
           ],
+          onPageChanged: (position) {
+            setState(() {
+              if (position == 0) {
+                pageTitle = AppStrings.appTitle;
+              } else {
+                pageTitle = "My Favourite";
+              }
+            });
+          },
         ));
   }
 
