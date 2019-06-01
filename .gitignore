@@ -104,3 +104,4 @@ ios/Flutter/Generated.xcconfig
 ios/Runner.xcodeproj/project.pbxproj
 .idea/libraries/Dart_Packages.xml
 .idea/libraries/Flutter_Plugins.xml
+android/local.properties

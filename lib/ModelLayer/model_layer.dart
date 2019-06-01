@@ -35,6 +35,8 @@ class ModelLayerImpl implements ModelLayer {
       idToken: googleAuth.idToken,
     );
 
+    print("signed in "+credential.toString());
+
     try {
       final FirebaseUser user =
           await firebaseAuth.signInWithCredential(credential);
