@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hack19/ModelLayer/model_layer.dart';
 import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
@@ -18,6 +19,7 @@ class Injector {
   ModelLayer _modelLayer;
   SharedPreferencesLayer _preferencesLayer;
   GoogleSignIn _googleSignIn;
+  FirebaseAuth _firebaseAuth;
 
   Injector._internal() {
     _networkLayer = NetworkLayerImpl(client: _client);
@@ -27,8 +29,12 @@ class Injector {
         scopes: <String>['email', 'profile'],
         signInOption: SignInOption.standard);
 
+    _firebaseAuth = FirebaseAuth.instance;
+
     _modelLayer = ModelLayerImpl(
-        sharedPreferencesLayer: _preferencesLayer, googleSignIn: _googleSignIn);
+        sharedPreferencesLayer: _preferencesLayer,
+        googleSignIn: _googleSignIn,
+        firebaseAuth: _firebaseAuth);
   }
 
   ModelLayer get modelLayer {
