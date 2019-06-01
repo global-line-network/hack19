@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -50,7 +48,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _onGoogleLoginClicked() {
-    
-  }
+  _onGoogleLoginClicked() {}
 }
