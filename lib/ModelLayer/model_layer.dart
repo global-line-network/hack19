@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
@@ -7,22 +6,40 @@ import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
 import 'model/login.dart';
 
 abstract class ModelLayer {
-  Future<LoginResponse> authenticateUser({@required LoginRequest request});
+  Future<FirebaseUser> authenticateUser();
   saveUserCredentials({@required LoginResponse credentials});
 }
 
 class ModelLayerImpl implements ModelLayer {
   final SharedPreferencesLayer sharedPreferencesLayer;
   final GoogleSignIn googleSignIn;
+  final FirebaseAuth firebaseAuth;
 
   ModelLayerImpl(
-      {@required this.sharedPreferencesLayer, @required this.googleSignIn})
+      {@required this.sharedPreferencesLayer,
+      @required this.googleSignIn,
+      @required this.firebaseAuth})
       : assert(sharedPreferencesLayer != null, googleSignIn != null);
 
   @override
-  Future<LoginResponse> authenticateUser({@required LoginRequest request}) {
-    final requestJson = json.encode(request.toJson());
-//    return networkLayer.loginUser(requestJson, "");
+  Future<FirebaseUser> authenticateUser() async {
+    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    try {
+      final FirebaseUser user =
+          await firebaseAuth.signInWithCredential(credential);
+      print("signed in " + user.displayName);
+      return user;
+    } catch (exception) {
+      throw Exception(exception.toString());
+    }
   }
 
   @override
