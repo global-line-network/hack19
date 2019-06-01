@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack19/screens/authentication/%20login.dart';
-
+import 'screens/jobListing/job_listing.dart';
 import 'DependencyInjection/injector.dart';
 import 'navigator/navigator.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: AppNavigator.loginRoute,
-      routes: {},
+      routes: {AppNavigator.jobListing: (context) => JobListingScreen()},
       home: LoginScreen(dataSource: Injector().modelLayer),
       
     );

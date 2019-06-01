@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:hack19/ModelLayer/model/post.dart';
+import 'package:hack19/ModelLayer/model_layer.dart';
 
 import '../../strings.dart';
 import '../../styles/style.dart';
 import 'job_view_pager.dart';
 
 class JobListingScreen extends StatefulWidget {
+  final ModelLayer dataSource;
+
+  JobListingScreen({this.dataSource});
+
   @override
   _JobListingScreenState createState() => _JobListingScreenState();
 }
 
 class _JobListingScreenState extends State<JobListingScreen> {
-  PageController controller = PageController();
-  var currentPageValue = 0.0;
+  List<Post> _posts = List();
 
   @override
   void initState() {
-    controller.addListener(() {
-      setState(() {
-        currentPageValue = controller.page;
-      });
-    });
-
+    _loadPosts();
     super.initState();
   }
 
@@ -37,11 +37,19 @@ class _JobListingScreenState extends State<JobListingScreen> {
         body: PageView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            new AllJobsViewPager(
-                controller: controller, currentPageValue: currentPageValue),
-            new AllJobsViewPager(
-                controller: controller, currentPageValue: currentPageValue)
+            new AllJobsViewPager(posts: _posts),
+            new AllJobsViewPager(posts: _posts)
           ],
         ));
+  }
+
+  void _loadPosts() {
+    widget.dataSource.fetchJobs().then((posts) {
+      setState(() {
+        this._posts = posts;
+      });
+    }).catchError((error) {
+      print("error is : ${error.toString()}");
+    });
   }
 }
