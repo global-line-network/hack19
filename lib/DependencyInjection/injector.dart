@@ -1,3 +1,4 @@
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hack19/ModelLayer/model_layer.dart';
 import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
 import 'package:http/http.dart' show Client;
@@ -16,15 +17,19 @@ class Injector {
   NetworkLayer _networkLayer;
   ModelLayer _modelLayer;
   SharedPreferencesLayer _preferencesLayer;
+  GoogleSignIn _googleSignIn;
 
   Injector._internal() {
     _client = Client();
     _networkLayer = NetworkLayerImpl(client: _client);
     _preferencesLayer =
         SharedPreferencesLayerImpl(prefs: SharedPreferences.getInstance());
+    _googleSignIn = GoogleSignIn(
+        scopes: <String>['email', 'profile'],
+        signInOption: SignInOption.standard);
 
     _modelLayer = ModelLayerImpl(
-        networkLayer: _networkLayer, sharedPreferencesLayer: _preferencesLayer);
+        sharedPreferencesLayer: _preferencesLayer, googleSignIn: _googleSignIn);
   }
 
   ModelLayer get modelLayer {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hack19/screens/authentication/%20login.dart';
 
 import 'navigator/navigator.dart';
-import 'screens/jobListing/job_listing.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: AppNavigator.jobListing,
+      initialRoute: AppNavigator.loginRoute,
       routes: {},
-      home: JobListingScreen(),
+      home: LoginScreen(),
     );
   }
 }
