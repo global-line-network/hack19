@@ -8,3 +8,9 @@ const TextStyle appBarTitleStyle = TextStyle(
   fontSize: 28,
   color: appbarTitleColor,
 );
+
+const TextStyle loginTextStyle = TextStyle(
+  fontSize: 40,
+  fontWeight: FontWeight.bold,
+  color: accentColor,
+);

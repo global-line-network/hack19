@@ -22,7 +22,6 @@ class Injector {
   FirebaseAuth _firebaseAuth;
 
   Injector._internal() {
-    _client = Client();
     _networkLayer = NetworkLayerImpl(client: _client);
     _preferencesLayer =
         SharedPreferencesLayerImpl(prefs: SharedPreferences.getInstance());

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hack19/screens/authentication/%20login.dart';
 
+import 'DependencyInjection/injector.dart';
 import 'navigator/navigator.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AppNavigator.loginRoute,
       routes: {},
-      home: LoginScreen(),
+      home: LoginScreen(dataSource: Injector().modelLayer),
     );
   }
 }
