@@ -4,10 +4,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
 
 import 'model/login.dart';
+import 'model/post.dart';
 
 abstract class ModelLayer {
   Future<FirebaseUser> authenticateUser();
   saveUserCredentials({@required LoginResponse credentials});
+
+  Future<List<Post>> fetchJobs();
 }
 
 class ModelLayerImpl implements ModelLayer {
@@ -50,5 +53,62 @@ class ModelLayerImpl implements ModelLayer {
     sharedPreferencesLayer.setUserProfileImage(credentials.imageUrl);
     sharedPreferencesLayer.setUserToken(credentials.token);
     sharedPreferencesLayer.setUserJobTitle(credentials.title);
+  }
+
+  @override
+  Future<List<Post>> fetchJobs() {
+    {
+      List<Post> posts = new List();
+      posts.add(Post(
+          name: "post 1",
+          image:
+              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+          city: "KL",
+          companyName: "Global Line Network",
+          currency: "MYR",
+          description:
+              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+          industry: "IT",
+          salary: 10000.00));
+      posts.add(Post(
+          name: "post 2",
+          image:
+              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+          city: "KL",
+          companyName: "Global Line Network",
+          currency: "MYR",
+          description:
+              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+          industry: "IT",
+          salary: 10000.00));
+
+      posts.add(Post(
+          name: "post 3",
+          image:
+              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+          city: "KL",
+          companyName: "Global Line Network",
+          currency: "MYR",
+          description:
+              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+          industry: "IT",
+          salary: 10000.00));
+
+      posts.add(Post(
+          name: "post 4",
+          image:
+              "https://www.expatica.com/nl/wp-content/uploads/sites/3/2018/11/shutterstock_532183876-1200x675.jpg",
+          city: "KL",
+          companyName: "Global Line Network",
+          currency: "MYR",
+          description:
+              "laskjdhf ljksadhjjsdhkjfhskj skjdhf klshdf lasjkd lfkjash dlkfjh ",
+          industry: "IT",
+          salary: 10000.00));
+
+      return Future(() {
+        return posts;
+      });
+    }
   }
 }
