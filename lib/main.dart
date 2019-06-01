@@ -6,6 +6,8 @@ import 'navigator/navigator.dart';
 
 void main() => runApp(MyApp());
 
+
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -18,6 +20,16 @@ class MyApp extends StatelessWidget {
       initialRoute: AppNavigator.loginRoute,
       routes: {},
       home: LoginScreen(dataSource: Injector().modelLayer),
+      
     );
   }
 }
+
+
+
+
+
+
+
+
+
