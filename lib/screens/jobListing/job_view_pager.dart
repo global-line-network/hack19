@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'job_listing_item.dart';
 
-class AllJobsViewPager extends StatelessWidget {
+class AllJobsViewPager extends StatefulWidget {
   const AllJobsViewPager({
     Key key,
     @required this.controller,
@@ -13,22 +13,27 @@ class AllJobsViewPager extends StatelessWidget {
   final double currentPageValue;
 
   @override
+  _AllJobsViewPagerState createState() => _AllJobsViewPagerState();
+}
+
+class _AllJobsViewPagerState extends State<AllJobsViewPager> {
+  @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: controller,
+      controller: widget.controller,
       itemBuilder: (context, position) {
-        if (position == currentPageValue.floor()) {
+        if (position == widget.currentPageValue.floor()) {
           return Transform(
             transform: Matrix4.identity()
-              ..rotateY(currentPageValue - position)
-              ..rotateZ(currentPageValue - position),
+              ..rotateY(widget.currentPageValue - position)
+              ..rotateZ(widget.currentPageValue - position),
             child: JobItemView(),
           );
-        } else if (position == currentPageValue.floor() + 1) {
+        } else if (position == widget.currentPageValue.floor() + 1) {
           return Transform(
             transform: Matrix4.identity()
-              ..rotateY(currentPageValue - position)
-              ..rotateZ(currentPageValue - position),
+              ..rotateY(widget.currentPageValue - position)
+              ..rotateZ(widget.currentPageValue - position),
             child: JobItemView(),
           );
         } else {
