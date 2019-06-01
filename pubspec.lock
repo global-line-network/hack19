@@ -7,7 +7,11 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.0.8"
+=======
+    version: "2.1.0"
+>>>>>>> 94c948e0d685135cf43cb67e149825a342d7ccfc
   boolean_selector:
     dependency: transitive
     description:
@@ -136,7 +140,11 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.0.1"
+=======
+    version: "2.0.2"
+>>>>>>> 94c948e0d685135cf43cb67e149825a342d7ccfc
   shared_preferences:
     dependency: "direct main"
     description:
@@ -204,7 +212,11 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.2.2"
+=======
+    version: "0.2.4"
+>>>>>>> 94c948e0d685135cf43cb67e149825a342d7ccfc
   typed_data:
     dependency: transitive
     description:
