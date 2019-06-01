@@ -34,27 +34,15 @@ class _JobListingScreenState extends State<JobListingScreen> {
           ),
           backgroundColor: accentColor,
         ),
-        body: Stack(
-          fit: StackFit.expand,
+        body: PageView(
+          scrollDirection: Axis.vertical,
           children: <Widget>[
-            Container(
-              color: Colors.red,
-              child: Center(
-                child: Text("child 1"),
-              ),
-            ),
-            Container(
-              color: Colors.green,
-              child: Center(
-                child: Text("child 2"),
-              ),
-            )
+            new AllJobsViewPager(
+                controller: controller, currentPageValue: currentPageValue),
+            new AllJobsViewPager(
+                controller: controller, currentPageValue: currentPageValue)
           ],
-        )
-
-//      new AllJobsViewPager(
-//          controller: controller, currentPageValue: currentPageValue),
-        );
+        ));
   }
 }
 
