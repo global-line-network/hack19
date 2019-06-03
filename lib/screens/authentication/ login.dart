@@ -63,15 +63,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: key,
+      backgroundColor: Colors.red,
       body: Center(
         child: isLoading
             ? CircularProgressIndicator()
             : Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(
-                    AppStrings.appTitle,
-                    style: loginTextStyle,
+                  Image.asset('assets/logo.png'),
+                   Container(
+                    height: 40.0,
                   ),
                   listOfOptions
                 ],

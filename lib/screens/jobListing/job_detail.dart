@@ -11,7 +11,7 @@ class JobDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Job Title",
+          job.name,
           style: appBarTitleStyle,
         ),
         backgroundColor: accentColor,

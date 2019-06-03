@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -5,6 +7,7 @@ import 'package:hack19/ModelLayer/sharePrefs/shared_preferences.dart';
 
 import 'model/login.dart';
 import 'model/post.dart';
+import 'package:flutter/services.dart';
 
 abstract class ModelLayer {
   Future<FirebaseUser> authenticateUser();
@@ -26,25 +29,20 @@ class ModelLayerImpl implements ModelLayer {
 
   @override
   Future<FirebaseUser> authenticateUser() async {
+  
+  
     final GoogleSignInAccount googleUser = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+  final AuthCredential credential = GoogleAuthProvider.getCredential(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
 
-    print("signed in " + credential.toString());
-
-    try {
-      final FirebaseUser user =
-          await firebaseAuth.signInWithCredential(credential);
-      print("signed in " + user.displayName);
-      return user;
-    } catch (exception) {
-      throw Exception(exception.toString());
-    }
+  final FirebaseUser user = await firebaseAuth.signInWithCredential(credential);
+  print("signed in " + user.displayName);
+  return user;
+    
   }
 
   @override
