@@ -11,12 +11,12 @@ class JobItemView extends StatelessWidget {
 
   JobItemView({@required this.post, @required this.isSecondPager});
 
-  final double imageHeight = 300;
+  final double imageHeight = 350;
 
   Widget get _buildImage => CachedNetworkImage(
         imageUrl: post.image,
         height: imageHeight,
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
       );
 
   Widget get _buildOverlay => Container(
@@ -40,6 +40,7 @@ class JobItemView extends StatelessWidget {
           ),
           Text(
             post.name,
+            textAlign: TextAlign.center,
             style: appBarTitleStyle,
           ),
           Container(
@@ -108,6 +109,9 @@ class JobItemView extends StatelessWidget {
                 style: postInfoStyle,
               )
             ],
+          ),
+          Container(
+            height: 30,
           ),
           Row(
             mainAxisSize: MainAxisSize.max,

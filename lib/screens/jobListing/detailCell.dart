@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack19/screens/jobStatus/jobStatus.dart';
 
 class DetailCell extends StatelessWidget {
   final job;
@@ -71,7 +72,9 @@ class DetailCell extends StatelessWidget {
           ],
         ),
         RaisedButton(
-          onPressed: applyButtonTapped,
+          onPressed: () {
+            applyButtonTapped(context);
+          },
           textColor: Colors.white,
           color: Colors.red,
           padding: const EdgeInsets.all(8.0),
@@ -82,6 +85,9 @@ class DetailCell extends StatelessWidget {
       ],
     );
   }
-}
 
-applyButtonTapped() {}
+  applyButtonTapped(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => JobStatusScreen()));
+  }
+}

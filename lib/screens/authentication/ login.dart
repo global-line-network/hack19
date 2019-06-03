@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hack19/ModelLayer/model_layer.dart';
-import 'package:hack19/navigator/navigator.dart';
+import 'package:hack19/screens/jobListing/job_listing.dart';
 import 'package:hack19/styles/style.dart';
 
 import '../../strings.dart';
@@ -23,9 +24,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-//    FirebaseAuth.instance.currentUser().then((user) {
-//      Navigator.pushNamed(context, AppNavigator.jobListing);
-//    });
+    FirebaseAuth.instance.currentUser().then((user) {
+      if (user == null) {
+        return;
+      }
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => JobListingScreen(
+                    dataSource: widget.dataSource,
+                  )),
+          (p) => false);
+    });
   }
 
   // Background Image
@@ -72,7 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _onGoogleLoginClicked() {
     widget.dataSource.authenticateUser().then((user) {
-      Navigator.pushNamed(context, AppNavigator.jobListing);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => JobListingScreen(
+                    dataSource: widget.dataSource,
+                  )),
+          (p) => false);
     }).catchError((error) {
       print("error " + error.toString());
     });

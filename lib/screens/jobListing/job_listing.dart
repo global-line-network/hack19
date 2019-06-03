@@ -56,12 +56,12 @@ class _JobListingScreenState extends State<JobListingScreen> {
   }
 
   void _loadPosts() {
-    // widget.dataSource.fetchJobs().then((posts) {
-    //   setState(() {
-    //     this._posts = posts;
-    //   });
-    // }).catchError((error) {
-    //   print("error is : ${error.toString()}");
-    // });
+    widget.dataSource.fetchJobs().then((posts) {
+      setState(() {
+        this._posts = posts;
+      });
+    }).catchError((error) {
+      print("error is : ${error.toString()}");
+    });
   }
 }
