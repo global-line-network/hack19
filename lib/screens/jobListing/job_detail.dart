@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hack19/styles/style.dart';
+
 import './detailCell.dart';
 
 class JobDetailPage extends StatelessWidget {
@@ -8,12 +10,13 @@ class JobDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Job Detail"),
+        title: Text(
+          "Job Title",
+          style: appBarTitleStyle,
+        ),
+        backgroundColor: accentColor,
       ),
-      body: Center(
-        child: 
-         DetailCell(job)
-      ),
+      body: Center(child: DetailCell(job)),
     );
   }
 }

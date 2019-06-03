@@ -15,13 +15,13 @@ class DetailCell extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  //Image.network("job.image"),
-                  Image.asset('assets/food.jpg'),
+                  Image.network(job.image),
+//                  Image.asset('assets/food.jpg'),
                   Container(
                     height: 16.0,
                   ),
                   Text(
-                    "job.companyName",
+                    job.companyName,
                     style:
                         TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                   ),
@@ -33,11 +33,11 @@ class DetailCell extends StatelessWidget {
                       margin: EdgeInsets.all(16.0),
                       child: Column(
                         children: <Widget>[
-                          Text("job.city"),
+                          Text(job.city),
                           Divider(),
-                          Text("job.industry"),
+                          Text(job.industry),
                           Divider(),
-                          Text("job.salary")
+                          Text("${job.salary}")
                         ],
                       ),
                     ),
@@ -57,7 +57,7 @@ class DetailCell extends StatelessWidget {
                     child: Container(
                       margin: EdgeInsets.all(16.0),
                       child: Column(
-                        children: <Widget>[Text("job.description"), Divider()],
+                        children: <Widget>[Text(job.description), Divider()],
                       ),
                     ),
                   ),
@@ -84,6 +84,4 @@ class DetailCell extends StatelessWidget {
   }
 }
 
-applyButtonTapped() {
-  
-}
+applyButtonTapped() {}

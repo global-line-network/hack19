@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hack19/ModelLayer/model/post.dart';
 import 'package:hack19/styles/style.dart';
 
+import 'job_detail.dart';
+
 class JobItemView extends StatelessWidget {
   final Post post;
   final isSecondPager;
@@ -164,15 +166,21 @@ class JobItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        borderOnForeground: false,
-        margin: EdgeInsets.symmetric(vertical: 64, horizontal: 30),
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(16.0)),
-        color: Colors.white,
-        elevation: 4,
-        child: Stack(
-          children: <Widget>[_buildImage, _buildOverlay, _buildInfo],
-        ));
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => JobDetailPage(post)));
+      },
+      child: Card(
+          borderOnForeground: false,
+          margin: EdgeInsets.symmetric(vertical: 64, horizontal: 30),
+          shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(16.0)),
+          color: Colors.white,
+          elevation: 4,
+          child: Stack(
+            children: <Widget>[_buildImage, _buildOverlay, _buildInfo],
+          )),
+    );
   }
 }
