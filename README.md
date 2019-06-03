@@ -11,6 +11,10 @@ If accept, user will see a detailed progress graph with current status of the ap
 
 We believe that such interaction will make a job search more exciting for candidates.
 
+<p align="center">
+  <img src="https://globalline.my/static/hack19/hack19s.gif" width="300">
+</p>
+
 At GLN we live, breath and sometimes eat code 24/7. yes that is not impossible ;)
 
 _P.S. Flutter developers feel free to join us at [GLN](https://globalline.my/), for the first b2b application development with Flutter FE._
